@@ -5,8 +5,14 @@ class UsersController < ApplicationController
     end 
 
     def create
-        user = User.create(name: params[:name], username: params[:username], email: params[:email])
-        render json: user
+        user = User.new(name: params[:name])
+        if user.save
+            render json: user, status: :ok
+        else 
+            render json: {
+                error: "User not created."
+            }, status: :not_created
+        end
     end 
 
     def delete
@@ -14,4 +20,10 @@ class UsersController < ApplicationController
         user.delete
         render json: user
     end
+
+    private
+
+    def user_arams
+        require(:user).permit(:id, :name)
+    end 
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :videos
+  resources :categories
   resources :users
 
   # Routes for Google authentication

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_195953) do
+ActiveRecord::Schema.define(version: 2021_01_13_175515) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "uid"
@@ -21,6 +29,14 @@ ActiveRecord::Schema.define(version: 2021_01_12_195953) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "google_token"
     t.string "google_refresh_token"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.string "source"
+    t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

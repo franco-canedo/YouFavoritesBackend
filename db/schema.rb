@@ -13,7 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_01_12_195953) do
 
   create_table "users", force: :cascade do |t|
+    t.string "uid"
+    t.string "email"
     t.string "name"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "google_token"
